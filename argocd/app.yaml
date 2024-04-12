@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/omegion/echo-k8s-app/
+    repoURL: https://github.com/engbalaji/echo-k8s-app.git
     targetRevision: HEAD
     path: kubernetes
     directory:
