@@ -3,6 +3,9 @@ kind: Application
 metadata:
   name: echo-server
   namespace: argocd-dev
+  finalizers:
+    # The default behaviour is foreground cascading deletion
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
