@@ -13,7 +13,7 @@ spec:
       recurse: true
   destination:
     server: https://kubernetes.default.svc
-    namespace: echo-server
+    namespace: argocd-dev
   syncPolicy:
     automated:
       prune: false
