@@ -1,0 +1,8 @@
+deploy:
+  steps:
+    k8sDiff:
+      before:
+        - name: updating namespace
+          run: |
+            echo “HELLO WORLD”
+            sed -i “s/{{namespace}}/$ENV/g” app.yaml
