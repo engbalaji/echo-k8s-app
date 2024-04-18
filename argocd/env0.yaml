@@ -1,9 +1,14 @@
 version: 2
+
 deploy:
   steps:
-    k8sDiff:
-      before:
-        - name: updating namespace
+    setupVariables:
+      after:
+        - name: Authenticate Kubernetes
           run: |
-            echo “HELLO WORLD”
-            sed -i “s/{{namespace}}/$ENV/g” app.yaml
+            if [[ $AUTHENTICATE_K8S == "true" ]]; then 
+              aws eks update-kubeconfig --region $region --name $cluster_name
+            fi
+        - name: Replace Namespace
+          run: |
+            sed -i "s/{{namespace-name}}/$NAMESPACE/g" namespace.yaml
