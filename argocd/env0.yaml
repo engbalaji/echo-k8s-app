@@ -10,4 +10,4 @@ deploy:
             fi
         - name: Replace Namespace
           run: |
-            sed -i "s/{{namespace}}/$NAMESPACE/g" ./namespaces/namespaces.yaml
+            sed -i "s/{{namespace}}/$NAMESPACE/g" /namespaces/namespaces.yaml
