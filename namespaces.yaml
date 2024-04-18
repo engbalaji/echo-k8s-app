@@ -1,0 +1,13 @@
+version: 2
+deploy:
+  steps:
+    setupVariables:
+      after:
+        - name: Authenticate Kubernetes
+          run: |
+            if [[ $AUTHENTICATE_K8S == "true" ]]; then 
+              aws eks update-kubeconfig --region $region --name $cluster_name
+            fi
+        - name: Replace Namespace
+          run: |
+            sed -i "s/{{namespace}}/$NAMESPACE/g" namespaces.yaml
