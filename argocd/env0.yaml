@@ -6,8 +6,8 @@ deploy:
         - name: Authenticate Kubernetes
           run: |
             if [[ $AUTHENTICATE_K8S == "true" ]]; then 
-              aws eks update-kubeconfig --region us-east-1 --name eks-pepoc
+              aws eks update-kubeconfig --region $region --name $cluster_name
             fi
         - name: Replace Namespace
           run: |
-            sed -i "s/{{namespace}}/$NAMESPACE/g" namespaces.yaml
+            sed -i "s/{{namespace}}/$ENV/g" app.yaml
